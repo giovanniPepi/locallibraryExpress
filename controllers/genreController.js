@@ -22,6 +22,11 @@ exports.genre_create_post = (req, res) => {
 
 // display genre delete form on GET
 exports.genre_delete_get = (req, res) => {
+  res.send("NOT IMPLEMENTED: Genre delete get");
+};
+
+// display genre delete form on GET
+exports.genre_delete_post = (req, res) => {
   res.send("NOT IMPLEMENTED: Genre delete post");
 };
 
