@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { DateTime } = require("luxon");
+const { DateTime, Interval } = require("luxon");
 
 const Schema = mongoose.Schema;
 
@@ -40,6 +40,16 @@ AuthorSchema.virtual("neatdeath").get(function () {
   return this.date_of_death
     ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED)
     : "";
+});
+
+AuthorSchema.virtual("lifespan").get(function () {
+  if (this.date_of_death) {
+    const date1 = DateTime.fromJSDate(this.date_of_birth);
+    const date2 = DateTime.fromJSDate(this.date_of_death);
+    const diffYears = Interval.fromDateTimes(date1, date2);
+    const lifespan = diffYears.length("years").toFixed(0);
+    return `${lifespan} years`;
+  } else return "";
 });
 
 //exporting
