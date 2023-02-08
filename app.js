@@ -10,7 +10,7 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const catalogRouter = require("./routes/catalog");
-const { mainModule } = require("process");
+const { body, validationResult } = require("express-validator");
 
 var app = express();
 dotenv.config();
