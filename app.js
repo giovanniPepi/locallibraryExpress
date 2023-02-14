@@ -23,7 +23,7 @@ dotenv.config();
 // See: https://mongoosejs.com/docs/migrating_to_6.html#strictquery-is-removed-and-replaced-by-strict
 
 mongoose.set("strictQuery", false);
-const mongoDB = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.edqohn9.mongodb.net/?retryWrites=true&w=majority`;
+const mongoDB = `mongodb://${process.env.MONGOUSER}:${process.env.MONGOPASSWORD}@${process.env.MONGOHOST}:${process.env.MONGOPORT}`;
 
 main().catch((err) => console.log(err));
 async function main() {
